@@ -16,15 +16,16 @@
 		$sth->bindValue(":email", $email);
 		$sth->execute();
 
-		$founeUsers = $sth->fetch();
+		$foundUsers = $sth->fetch();
 
 		// Check l'utilisateur
-	if ($founeUsers) {
-		print_r($founeUsers);
+	if ($foundUsers) {
+		print_r($foundUsers);
 
-		$validPassword = password_verify($password, $founeUsers['password']);
+		$validPassword = password_verify($password, $foundUsers['password']);
 		if ($validPassword) {
-			header("location:../accueil.php");
+			$_SESSION['user'] = $foundUsers;
+			header("location:../profil.php");
 		}
 		else {
 			$_SESSION['login_error'] = "Mauvais Mots de Passe ou Utillisateur !";
