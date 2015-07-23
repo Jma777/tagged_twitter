@@ -1,3 +1,6 @@
+<?php 
+	session_start();
+ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,6 +20,19 @@
 			<input type="text" name="email" placeholder="Votre Email">
 			<input type="password" name="password" placeholder="Password">
 			<button type="submit">Connexion</button>
+			<div class="error">
+			<b>
+				<?php 
+					if (!empty($_SESSION['login_error'])) {
+
+						echo $_SESSION['login_error'];
+
+						unset($_SESSION['login_error']);
+					}
+
+				 ?>
+			</b>
+		</div>
 		</form>
 		<div class="button-container">
 			<a href="login.php" class="go-login">Connexion</a>

@@ -24,14 +24,17 @@
 
 		$validPassword = password_verify($password, $founeUsers['password']);
 		if ($validPassword) {
-			
-			echo "Bonjour";
+			header("location:../accueil.php");
 		}
 		else {
-			echo "nop";
+			$_SESSION['login_error'] = "Mauvais Mots de Passe ou Utillisateur !";
+			header('location:../login.php');
+			die();
 		}
 	}
 	else {
-		echo "Super nop";
+		$_SESSION['login_error'] = "Mauvais Mots de Passe ou Utillisateur !";
+		header('location:../login.php');
+		die();
 	}
  ?>
