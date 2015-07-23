@@ -1,7 +1,7 @@
 <?php 
 
 	session_start();
-	include 'includes/db.php';
+	include 'db.php';
 
 	print_r($_POST);
 
@@ -22,10 +22,16 @@
 	if ($founeUsers) {
 		print_r($founeUsers);
 
-		$validPassword = $password_verify($password, $founeUsers['password']);
+		$validPassword = password_verify($password, $founeUsers['password']);
 		if ($validPassword) {
 			
-			header("location:")
+			echo "Bonjour";
 		}
+		else {
+			echo "nop";
+		}
+	}
+	else {
+		echo "Super nop";
 	}
  ?>

@@ -23,6 +23,16 @@
 		elseif (!preg_match($user_name_regex, $user_name)) {
 			$error = "Votre pseudo ne doit pas contenir de truc de merde";
 		}
+		else {
+			$sql = " SELECT user_name FROM users WHERE user_name = :user_name";
+			$sth = $dbh->prepare($sql);
+			$sth-> execute(array(":user_name" => $user_name));
+			$foundPseudo = $sth->fetchColumn();
+
+			if ($foundPseudo) {
+				$error = "Ce pseudo est déjà enregistré ici !";
+			}
+		}
 
 		// Verif du MDP
 		if (empty($email)) {
@@ -30,6 +40,16 @@
 		}
 		elseif (strlen($email) > 100) {
 			$error = "Votre email est trop long";
+		}
+		else {
+			$sql = " SELECT email FROM users WHERE email = :email";
+			$sth = $dbh->prepare($sql);
+			$sth-> execute(array(":email" => $email));
+			$foundEmail = $sth->fetchColumn();
+
+			if ($foundEmail) {
+				$error = "Cet email est déjà enregistré ici !";
+			}
 		}
 
 
@@ -62,7 +82,8 @@
 				$sth = $dbh->prepare($sql);
 				$sth->bindValue(":user_name", $user_name);
 				$sth->bindValue(":email", $email);
-				$sth->bindValue(":password", $password);
+				$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+				$sth->bindValue(":password", $hashedPassword);
 				$sth->execute();
 
 				$succes = "Merci de votre Inscription";

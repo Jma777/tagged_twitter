@@ -13,7 +13,7 @@
 <body>
 	<div class="main-container">
 		<h1>Connexions</h1>
-		<form method="POST" action="">
+		<form method="POST" action="includes/login_handler.php">
 			<input type="text" name="email" placeholder="Votre Email">
 			<input type="password" name="password" placeholder="Password">
 			<button type="submit">Connexion</button>
