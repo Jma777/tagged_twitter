@@ -3,7 +3,7 @@
     define("DBHOST", "localhost"); 	// IP du serveur
     define("DBUSER", "root");		// UserName MySQL
     define("DBPASS", "");			// MDP MySQL
-    define("DBNAME", "tagged_twitter");// Nom de la BDD
+    define("DBNAME", "tagged-twitter");// Nom de la BDD
 
 	try {
 		$dbh = new PDO(
