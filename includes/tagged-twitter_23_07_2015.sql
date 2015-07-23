@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 23 Juillet 2015 à 13:55
+-- Généré le :  Jeu 23 Juillet 2015 à 14:16
 -- Version du serveur :  5.6.24
 -- Version de PHP :  5.6.8
 
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `tweets` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `tag_id` int(11) NOT NULL,
-  `text` varchar(140) CHARACTER SET utf8 NOT NULL,
+  `tweet_content` varchar(140) CHARACTER SET utf8 NOT NULL,
   `link` varchar(250) CHARACTER SET utf8 DEFAULT NULL,
   `pic` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
   `date_created` datetime NOT NULL,
