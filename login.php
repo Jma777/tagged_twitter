@@ -20,19 +20,20 @@
 			<input type="text" name="email" placeholder="Votre Email">
 			<input type="password" name="password" placeholder="Password">
 			<button type="submit">Connexion</button>
+			<a href="forget_password.php" class="forget-pass">Mots de passe Oublier ?</a>
 			<div class="error">
-			<b>
-				<?php 
-					if (!empty($_SESSION['login_error'])) {
+				<b>
+					<?php 
+						if (!empty($_SESSION['login_error'])) {
 
-						echo $_SESSION['login_error'];
+							echo $_SESSION['login_error'];
 
-						unset($_SESSION['login_error']);
-					}
+							unset($_SESSION['login_error']);
+						}
 
-				 ?>
-			</b>
-		</div>
+					 ?>
+				</b>
+			</div>
 		</form>
 		<div class="button-container">
 			<a href="login.php" class="go-login">Connexion</a>
