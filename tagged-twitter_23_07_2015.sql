@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 24 Juillet 2015 à 12:30
+-- Généré le :  Ven 24 Juillet 2015 à 15:28
 -- Version du serveur :  5.6.24
 -- Version de PHP :  5.6.8
 
@@ -53,26 +53,26 @@ CREATE TABLE IF NOT EXISTS `tags` (
 --
 
 INSERT INTO `tags` (`id`, `title`, `current_tag`, `date_created`, `date_modified`) VALUES
-(1, 'Sequi enim est dolorem similique aliquam molestias.', 0, '2015-07-24 11:58:56', '2015-07-24 12:08:59'),
-(2, 'Quibusdam iusto eaque architecto non cum molestiae.', 0, '2015-07-24 11:58:56', '2015-07-24 11:58:56'),
-(3, 'Quasi voluptates voluptatem consequatur sapiente consequatur ex consequuntur.', 0, '2015-07-24 11:58:56', '2015-07-24 11:58:56'),
-(4, 'Eveniet numquam quam occaecati quia.', 0, '2015-07-24 11:58:56', '2015-07-24 11:58:56'),
-(5, 'Nisi exercitationem consequuntur velit atque.', 0, '2015-07-24 11:58:56', '2015-07-24 11:58:56'),
-(6, 'Est ipsam ea repellat quasi repellat.', 0, '2015-07-24 11:58:56', '2015-07-24 11:58:56'),
-(7, 'Nam unde voluptatem voluptas sunt voluptatem.', 0, '2015-07-24 11:58:56', '2015-07-24 11:58:56'),
-(8, 'Aliquam ab aut dolorum occaecati nostrum.', 0, '2015-07-24 11:58:56', '2015-07-24 11:58:56'),
-(9, 'Et enim amet nulla.', 0, '2015-07-24 11:58:56', '2015-07-24 11:58:56'),
-(10, 'Sunt rerum velit ut maiores facilis occaecati velit.', 0, '2015-07-24 11:58:56', '2015-07-24 11:58:56'),
-(11, 'Quisquam laboriosam dignissimos consectetur ea aut.', 0, '2015-07-24 11:58:56', '2015-07-24 11:58:56'),
-(12, 'Consequuntur commodi unde provident quae error.', 0, '2015-07-24 11:58:56', '2015-07-24 11:58:56'),
-(13, 'Magnam quia nisi nostrum sint.', 0, '2015-07-24 11:58:56', '2015-07-24 11:58:56'),
-(14, 'Fuga quia repellat incidunt.', 0, '2015-07-24 11:58:56', '2015-07-24 11:58:56'),
-(15, 'Omnis omnis fugiat numquam quos culpa et soluta cupiditate.', 0, '2015-07-24 11:58:56', '2015-07-24 11:58:56'),
-(16, 'Voluptatum voluptatem atque velit aut occaecati modi aut.', 0, '2015-07-24 11:58:56', '2015-07-24 11:58:56'),
-(17, 'Odit est voluptatibus alias velit cupiditate iusto.', 0, '2015-07-24 11:58:56', '2015-07-24 11:58:56'),
-(18, 'Aut beatae fugiat non nihil.', 0, '2015-07-24 11:58:56', '2015-07-24 11:58:56'),
-(19, 'Voluptate et quod nostrum optio vel velit.', 0, '2015-07-24 11:58:56', '2015-07-24 11:58:56'),
-(20, 'Provident ut veritatis qui cumque quia laboriosam.', 0, '2015-07-24 11:58:56', '2015-07-24 11:58:56');
+(1, 'Sequi enim est dolorem similique aliquam molestias.', 0, '2015-07-24 11:58:56', '2015-07-24 14:28:05'),
+(2, 'Quibusdam iusto eaque architecto non cum molestiae.', 0, '2015-07-24 11:58:56', '2015-07-24 14:28:25'),
+(3, 'Quasi voluptates voluptatem consequatur sapiente consequatur ex consequuntur.', 0, '2015-07-24 11:58:56', '2015-07-24 14:26:55'),
+(4, 'Eveniet numquam quam occaecati quia.', 0, '2015-07-24 11:58:56', '2015-07-24 14:29:22'),
+(5, 'Nisi exercitationem consequuntur velit atque.', 0, '2015-07-24 11:58:56', '2015-07-24 14:27:45'),
+(6, 'Est ipsam ea repellat quasi repellat.', 0, '2015-07-24 11:58:56', '2015-07-24 14:27:35'),
+(7, 'Nam unde voluptatem voluptas sunt voluptatem.', 0, '2015-07-24 11:58:56', '2015-07-24 14:29:25'),
+(8, 'Aliquam ab aut dolorum occaecati nostrum.', 0, '2015-07-24 11:58:56', '2015-07-24 14:27:15'),
+(9, 'Et enim amet nulla.', 0, '2015-07-24 11:58:56', '2015-07-24 14:18:45'),
+(10, 'Sunt rerum velit ut maiores facilis occaecati velit.', 0, '2015-07-24 11:58:56', '2015-07-24 14:27:55'),
+(11, 'Quisquam laboriosam dignissimos consectetur ea aut.', 1, '2015-07-24 11:58:56', '2015-07-24 14:29:15'),
+(12, 'Consequuntur commodi unde provident quae error.', 0, '2015-07-24 11:58:56', '2015-07-24 14:16:00'),
+(13, 'Magnam quia nisi nostrum sint.', 0, '2015-07-24 11:58:56', '2015-07-24 14:29:05'),
+(14, 'Fuga quia repellat incidunt.', 0, '2015-07-24 11:58:56', '2015-07-24 14:28:05'),
+(15, 'Omnis omnis fugiat numquam quos culpa et soluta cupiditate.', 0, '2015-07-24 11:58:56', '2015-07-24 14:15:05'),
+(16, 'Voluptatum voluptatem atque velit aut occaecati modi aut.', 0, '2015-07-24 11:58:56', '2015-07-24 14:26:25'),
+(17, 'Odit est voluptatibus alias velit cupiditate iusto.', 0, '2015-07-24 11:58:56', '2015-07-24 14:29:39'),
+(18, 'Aut beatae fugiat non nihil.', 0, '2015-07-24 11:58:56', '2015-07-24 14:27:05'),
+(19, 'Voluptate et quod nostrum optio vel velit.', 0, '2015-07-24 11:58:56', '2015-07-24 14:28:15'),
+(20, 'Provident ut veritatis qui cumque quia laboriosam.', 0, '2015-07-24 11:58:56', '2015-07-24 14:28:45');
 
 -- --------------------------------------------------------
 
@@ -169,6 +169,17 @@ ALTER TABLE `tweets`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+DELIMITER $$
+--
+-- Événements
+--
+CREATE DEFINER=`root`@`localhost` EVENT `change current_tag` ON SCHEDULE EVERY 5 SECOND STARTS '2015-07-24 14:34:00' ON COMPLETION PRESERVE ENABLE DO BEGIN
+	UPDATE tags SET current_tag = 0 WHERE current_tag = 1;
+	UPDATE tags SET current_tag = 1 WHERE current_tag = 0 ORDER BY RAND()LIMIT 1;
+END$$
+
+DELIMITER ;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
