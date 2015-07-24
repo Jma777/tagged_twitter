@@ -29,14 +29,36 @@ include("includes/functions.php");
 		<input type="text" id="link" name="link">
 		<label for="pic">Ajouter une image (donner le nom du fichier)</label>
 		<input type="text" id="pic" name="pic">
-		<input type="hidden" value="$tag_id">
+		<input type="hidden" value="" id="tagId" name ="tagId">
 		<input type="submit" value="Valider">
 	</form>
 	<div id="result"></div>
 
-	
+		
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> 
 	<script>
+		var tag_id = -1;
+
+		$(window).on("load",function(){
+			$.ajax({
+				"url": "http://localhost/tagged_twitter/getTagId.php"
+			}).done(function(response){
+				tag_id = response;
+			});
+		});
+		window.setInterval(function(){
+			$.ajax({
+			"url": "http://localhost/tagged_twitter/getTagId.php"
+		}).done(function(response){
+
+			tag_id = response;
+			$("#tagId").attr("value",tag_id);
+		});
+
+		},2000);
+
+
+
 		$(window).on("load",function(){
 			$.ajax({
 			"url": "http://localhost/tagged_twitter/test.php"
