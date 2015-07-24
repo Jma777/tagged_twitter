@@ -1,32 +1,7 @@
 <?php
+session_start();
 include("includes/db.php");
 include("includes/functions.php");
-
-// affichage du tag
-	$sql = "SELECT *
-			FROM tags
-			ORDER BY RAND()
-			LIMIT 1";
-
-	$sth = $dbh->prepare($sql);
-	$sth->execute();
-	$tag = $sth->fetch();
-
-	pr($tag);
-
-// affichage des tweets
-	// $sql = "SELECT *
-	// 		FROM tweets
-	// 		-- WHERE ? = tag_id afficher les messages reliés au tag dans le créneau
-	// 		ORDER BY date_created DESC
-	// 		LIMIT 10";
-
-	// $sth = $dbh->prepare($sql);
-	// $sth->execute();
-	// $tweets = $sth->fetchAll();
-
-	// pr($tweets);
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -34,15 +9,20 @@ include("includes/functions.php");
 	<meta charset="UTF-8">
 	<title>Document</title>
 </head>
+<style>
+		#result {
+			border: 1px solid #CCC; 
+			padding: 20px;
+		}
+		p{
+			border: 1px solid #ccc;
+		}
+	</style>
 <body>
-	<div class="maint-container">
-		
-
 	<h1>Accueil</h1>
 
-	<h2><?php echo tag['title']?></h2> 
-
 	<form method= "POST" action="includes/accueil_handler.php">
+		<legend>Ajouter un nouveau tweet</legend>
 		<label for="tweet">Ajouter un nouveau tweet</label>
 		<textarea name="tweet_content" id="tweet_content" cols="30" rows="10"></textarea>	
 		<label for="link">Ajouter un lien</label>
@@ -52,27 +32,32 @@ include("includes/functions.php");
 		<input type="hidden" value="$tag_id">
 		<input type="submit" value="Valider">
 	</form>
+	<div id="result"></div>
 
-	<?php
-	foreach ($tweets as $tweet) :
-	 	$tweet_content = $tweet['tweet_content'];
-	 	$img = $tweet['pic'] . ".jpg";
-	 	$img_title = $tweet['pic'];
-	 	$link = $tweet['link'];
-	?>
-
-	<div class="showTweets">
-
-		<p><?php echo $tweet_content?></p>
-		<img src="<?php echo $img?>" alt="<?php echo $img_title?>">
-		<a href="<?php echo $link?>"><?php echo $link?></a>
-
-	<?php
-	endforeach;
-	?>
-		
-	</div>
 	
-	</div>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> 
+	<script>
+		$(window).on("load",function(){
+			$.ajax({
+			"url": "http://localhost/tagged_twitter/test.php"
+		}).done(function(response){
+
+			// console.log(response);
+			$("#result").html(response);
+		});
+
+		});
+		window.setInterval(function(){
+			$.ajax({
+			"url": "http://localhost/tagged_twitter/test.php"
+		}).done(function(response){
+
+			console.log(response);
+			$("#result").html(response);
+		});
+
+		},2000);
+
+	</script>
 </body>
 </html>
