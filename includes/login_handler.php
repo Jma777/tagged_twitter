@@ -25,7 +25,7 @@
 		$validPassword = password_verify($password, $foundUsers['password']);
 		if ($validPassword) {
 			$_SESSION['user'] = $foundUsers;
-			header("location:../profil.php");
+			header("location:../accueil.php");
 		}
 		else {
 			$_SESSION['login_error'] = "Mauvais Mots de Passe ou Utillisateur !";
