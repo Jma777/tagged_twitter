@@ -2,8 +2,11 @@
 	session_start();
 	include 'includes/db.php';
 
+	include 'includes/functions.php';
+
+
 	$user_name_regex = "/^[\p{L}0-9._-]{2,100}$/u";
-	print_r($_POST);
+	//print_r($_POST);
 
 	if (!empty($_POST)) {
 		
@@ -75,8 +78,8 @@
 
 		if (empty($error)) {
 
-			$sql = "INSERT INTO users (id, user_name, email, password, date_created)
-							VALUES (NULL, :user_name, :email, :password,  NOW() )";
+			$sql = "INSERT INTO users(id, user_name, password, email, pic_name, bio, token, token_expired, date_created, date_modified)
+							VALUES (NULL, :user_name, :password, :email,NULL, NULL, NULL, NULL, NOW(), NOW())";
 
 
 				$sth = $dbh->prepare($sql);
@@ -85,6 +88,21 @@
 				$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 				$sth->bindValue(":password", $hashedPassword);
 				$sth->execute();
+
+				$foundUsers = "SELECT * 
+								FROM users
+								WHERE id = :id";
+
+				$sth = $dbh->prepare($foundUsers);
+				$sth->bindValue(":id", $dbh->lastInsertId());
+				$sth->execute();
+				$foundUsers = $sth->fetch();
+				
+				//pr($foundUsers);
+
+				$_SESSION['user'] = $foundUsers;
+
+				//pr($_SESSION['user']);
 
 				$succes = "Merci de votre Inscription";
 				header("location:complet_profil.php");

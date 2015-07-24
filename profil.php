@@ -25,7 +25,8 @@
 			<h2><?php echo $_SESSION['user']['user_name']; ?></h2>
 			<p><?php echo $_SESSION['user']['email']; ?></p>
 		</div>
-		<a href="includes/logout.php" class="btn">Déconnexion</a>
+		<a href="includes/logout.php">Déconnexion</a>
+		<a href="parametre_profil.php">Paramètre</a>
 	</div>
 </body>
 </html>
