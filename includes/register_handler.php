@@ -87,6 +87,7 @@
 				$sth->execute();
 
 				$succes = "Merci de votre Inscription";
+				header("location:complet_profil.php");
 
 		}
 	}
