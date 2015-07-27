@@ -57,6 +57,10 @@ include("includes/functions.php");
 			});
 
 		};
+
+		$("#result").on("click",".icon",function(){
+			console.log(this);
+		});
 		
 		$(window).on("load",getTag);
 		$(window).on("load",getRelatedTweets);
