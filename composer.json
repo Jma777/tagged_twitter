@@ -1,5 +1,8 @@
 {
     "require": {
-        "fzaninotto/faker": "^1.5"
+        "fzaninotto/faker": "^1.5",
+        "phpmailer/phpmailer": "^5.2",
+        "ircmaxell/random-lib": "^1.1",
+        "abeautifulsite/simpleImage": "^2.5"
     }
 }
