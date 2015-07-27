@@ -1,0 +1,17 @@
+.icon{
+	background: url(../img/sprite-1445387679.jpg) 00 no-repeat;
+	display: inline-block;
+	margin-left: 20px;
+	margin-bottom: -3px;
+	width: 30px;
+	height: 30px;
+	background-position: 0% 22%;
+}
+.icon:hover{
+	background: url(../img/sprite-1445387679.jpg) 00 no-repeat;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background-position: 0% 34%;
+	cursor: pointer;
+}

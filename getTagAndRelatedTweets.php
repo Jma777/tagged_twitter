@@ -34,7 +34,7 @@ include("includes/functions.php");
 	$sth->bindValue(":tag_id",$tag_id);
 	$sth->execute();
 	$tweets = $sth->fetchAll();
-	pr($tweets);
+	// pr($tweets);
 
 	
 	
@@ -48,7 +48,7 @@ include("includes/functions.php");
 	 	$tweet_author = $tweet['user_name'];
 	 	$tweet_date = $tweet['date_created'];
 	 	$id = $tweet['user_id'];
-	 	echo "<p>".$tweet_content.'<br />'.'<a href="showTweetsByProfile.php?i='.$id.'">'.$tweet_author.'</a>'.'<br />'."posté le : ".$tweet_date."</p>";
+	 	echo "<p>".$tweet_content.'<br />'.'<a href="showTweetsByProfile.php?i='.$id.'">'.$tweet_author.'</a>'.'<br />'."posté le : ".$tweet_date.'<span class="icon"></div>'."</p>";
 	}
 
 	// pr($tweets);
