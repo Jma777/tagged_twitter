@@ -7,7 +7,7 @@ include("includes/functions.php");
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Accueil</title>
 </head>
 <style>
 		#result {
@@ -39,47 +39,33 @@ include("includes/functions.php");
 	<script>
 		var tag_id = -1;
 
-		$(window).on("load",function(){
+		function getTag(){
 			$.ajax({
 				"url": "http://localhost/tagged_twitter/getTagId.php"
 			}).done(function(response){
 				tag_id = response;
 			});
-		});
-		window.setInterval(function(){
+		};
+		function getRelatedTweets(){
 			$.ajax({
-			"url": "http://localhost/tagged_twitter/getTagId.php"
-		}).done(function(response){
-
-			tag_id = response;
-			$("#tagId").attr("value",tag_id);
-		});
-
-		},2000);
-
-
-
-		$(window).on("load",function(){
-			$.ajax({
-			"url": "http://localhost/tagged_twitter/getTagAndRelatedTweets.php"
-		}).done(function(response){
+				"url": "http://localhost/tagged_twitter/getTagAndRelatedTweets.php"
+			}).done(function(response){
 
 			// console.log(response);
-			$("#result").html(response);
-		});
+				$("#result").html(response);
+			});
 
-		});
+		};
+		
+		$(window).on("load",getTag);
+		$(window).on("load",getRelatedTweets);
+		
 		window.setInterval(function(){
-			$.ajax({
-			"url": "http://localhost/tagged_twitter/getTagAndRelatedTweets.php"
-		}).done(function(response){
-
-			console.log(response);
-			$("#result").html(response);
-		});
-
-		},2000);
-
+			getTag();
+			getRelatedTweets();
+		}
+		,2000);
+		
 	</script>
 </body>
 </html>
