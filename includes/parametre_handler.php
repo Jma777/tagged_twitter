@@ -1,7 +1,7 @@
 <?php 
-	session_start();
 	include 'includes/db.php';
 	include 'includes/functions.php';
+	include 'vendor/autoload.php';
 
 	$user_name_regex = "/^[\p{L}0-9._-]{2,100}$/u";
 	//print_r($_POST);
@@ -23,6 +23,9 @@
 		elseif (!preg_match($user_name_regex, $user_name)) {
 			$error = "Votre pseudo ne doit pas contenir de truc de merde";
 		}
+		elseif (filter_var($user_name, FILTER_VALIDATE_EMAIL)) {
+			$error = "Veulliez ne pas utilliser un Email comme pseudo !";
+		}
 		else {
 
 			if ($user_name !== $_SESSION['user']['user_name']) {
@@ -39,11 +42,12 @@
 							$sth->bindValue(':user_name', $user_name);
 							$sth->execute();
 					}
+					else {
+						$error = "Ce pseudo est déjà enregistré ici !";
+					}
 
 			}
-			elseif ($foundPseudo) {
-				$error = "Ce pseudo est déjà enregistré ici !";
-			}
+
 		}
 
 
@@ -53,6 +57,9 @@
 		}
 		elseif (strlen($email) > 100) {
 			$error = "Votre email est trop long";
+		}
+		elseif (!filter_var($email,  FILTER_VALIDATE_EMAIL)) {
+			$error = "Votre Email n'est pas valide !";
 		}
 		else {
 
@@ -71,10 +78,9 @@
 					$sth->bindValue(':email', $email);
 					$sth->execute();
 				}
-			
-			}
-			elseif ($foundEmail) {
-				$error = "Cet email est déjà enregistré ici !";
+				else {
+					$error = "Cet email est déjà enregistré ici !";
+				}
 			}
 		}
 
@@ -82,12 +88,56 @@
 		if (empty($bio)) {
 			$error = "Veuilliez renseignez le champs de Description";
 		}
+		//Verif Image
+		if (!empty($_FILES)) {
+
+			$tmpName = $_FILES['pic_name']['tmp_name'];
+
+			if ($_FILES['pic_name']['error'] != 0) {
+				switch ($_FILES['pic_name']['error']) {
+					case 1:
+						$error = "Votre fichier est trop gros !";
+						break;
+					case 4:
+						$error = "Aucun fichier n'a été selectionné !";
+						break;
+					default:
+						$error = "Une erreur est survenue lors du chargement de votre image LOL";
+						break;		
+				}
+			}
+
+			$info = finfo_open(FILEINFO_MIME_TYPE);
+			$mime = finfo_file($info, $tmpName);
+
+			$acceptedMime = array("image/jpeg", "image/gif", "image/png");
+
+			if (!in_array($mime, $acceptedMime)) {
+				$error = "Type de fichier refuser ";
+			}
+
+			if (empty($error)) {
+				$extention = pathinfo($_FILES['pic_name']['name'], PATHINFO_EXTENSION);
+				$pic_name = md5($tmpName . time() . uniqid()) . "." . $extention;
+				$destinationDirectory = __DIR__ . "/../img/uploads/";
+
+				if (file_exists($destinationDirectory . "originals/" . $pic_name)) {
+					$pic_name = md5($tmpName . time() . uniqid())  . uniqid() . "." . $extention;
+				}
+				move_uploaded_file($tmpName, $destinationDirectory . "originals/".$pic_name);
+
+				$img = new abeautifulsite\SimpleImage($destinationDirectory . "originals/".$pic_name);
+				$img->best_fit(600,600)->save($destinationDirectory . "mediums/" . $pic_name);
+				$img->thumbnail(150,150)->save($destinationDirectory . "thumbnails/" . $pic_name);
+		
+			}
+		}
 
 		// insert dans la BDD
 		if (empty($error)) {
 			
 			$sql = "UPDATE users 
-					SET user_name = :user_name, email = :email, bio = :bio
+					SET user_name = :user_name, email = :email, bio = :bio, pic_name = :pic_name
 					WHERE id = :id";
 
 				$sth = $dbh->prepare($sql);
@@ -95,11 +145,13 @@
 				$sth->bindValue(':user_name', $user_name);
 				$sth->bindValue(':email', $email);
 				$sth->bindValue(':bio', $bio);
+				$sth->bindValue(':pic_name', $pic_name);
 				$sth->execute();
 
 				$succes = "Modification enregistrer";
 
 		}
 	}
+	refreshUser();
 
  ?>

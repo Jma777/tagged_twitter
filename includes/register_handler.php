@@ -26,6 +26,9 @@
 		elseif (!preg_match($user_name_regex, $user_name)) {
 			$error = "Votre pseudo ne doit pas contenir de truc de merde";
 		}
+		elseif (filter_var($user_name, FILTER_VALIDATE_EMAIL)) {
+			$error = "Veulliez ne pas utilliser un Email comme pseudo !";
+		}
 		else {
 			$sql = " SELECT user_name FROM users WHERE user_name = :user_name";
 			$sth = $dbh->prepare($sql);
@@ -37,7 +40,7 @@
 			}
 		}
 
-		// Verif du MDP
+		// Verif du Mail
 		if (empty($email)) {
 			$error = 'Veuilliez entrer un Email';
 		}
@@ -62,6 +65,9 @@
 		}
 		elseif ($password !== $password_confirm ) {
 			$error = "Vos mots de passe de corresponde pas ";
+		}
+		elseif (!filter_var($email,  FILTER_VALIDATE_EMAIL)) {
+			$error = "Votre Email n'est pas valide !";
 		}
 		else {
 			$containsLetter = preg_match('/[a-zA-Z]/', $password);

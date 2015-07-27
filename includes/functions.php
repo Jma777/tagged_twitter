@@ -67,3 +67,19 @@
 		return $generator->generateString(32,'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
 	}
 
+
+
+	// Function de Refresh User pour que il reste connecter
+
+	function refreshUser(){
+		$foundUsers = "SELECT * 
+						FROM users
+						WHERE id = :id";
+			global $dbh;
+			$sth = $dbh->prepare($foundUsers);
+			$sth->bindValue(":id", $_SESSION['user']['id']);
+			$sth->execute();
+			$foundUsers = $sth->fetch();
+
+			$_SESSION['user'] = $foundUsers;
+	}
