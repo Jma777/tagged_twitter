@@ -61,7 +61,7 @@ include("includes/functions.php");
 
 		$(window).on("load",function(){
 			$.ajax({
-			"url": "http://localhost/tagged_twitter/test.php"
+			"url": "http://localhost/tagged_twitter/getTagAndRelatedTweets.php"
 		}).done(function(response){
 
 			// console.log(response);
@@ -71,7 +71,7 @@ include("includes/functions.php");
 		});
 		window.setInterval(function(){
 			$.ajax({
-			"url": "http://localhost/tagged_twitter/test.php"
+			"url": "http://localhost/tagged_twitter/getTagAndRelatedTweets.php"
 		}).done(function(response){
 
 			console.log(response);
