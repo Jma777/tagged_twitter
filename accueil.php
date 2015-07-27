@@ -8,6 +8,7 @@ include("includes/functions.php");
 <head>
 	<meta charset="UTF-8">
 	<title>Accueil</title>
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <style>
 		#result {
@@ -64,8 +65,8 @@ include("includes/functions.php");
 			getTag();
 			getRelatedTweets();
 		}
-		,2000);
-		
+		,10000);
+
 	</script>
 </body>
 </html>
