@@ -30,7 +30,9 @@
 	$sth->execute();
 
 	if ($sth->execute()) {
-		echo "tweet posté !";
+		// echo "tweet posté !";
+		header("location: ../accueil.php");
+		die();
 	}
 
 
