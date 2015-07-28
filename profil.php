@@ -9,9 +9,6 @@
 			WHERE user_id = 
 			ORDER BY date_created DESC";
 
-
-			print_r($_SESSION['user']);
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -23,6 +20,7 @@
 	<div class="main-container">
 		<div>
 			<h2><?php echo $_SESSION['user']['user_name']; ?></h2>
+			<p><?php echo $_SESSION['user']['bio']; ?></p>
 			<p><?php echo $_SESSION['user']['email']; ?></p>
 			
 			<img src="img/uploads/thumbnails/<?php echo $_SESSION['user']['pic_name']; ?>" alt="Photo de profil">

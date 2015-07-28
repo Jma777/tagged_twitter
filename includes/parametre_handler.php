@@ -4,7 +4,6 @@
 	include 'vendor/autoload.php';
 
 	$user_name_regex = "/^[\p{L}0-9._-]{2,100}$/u";
-	//print_r($_POST);
 
 	if (!empty($_POST)) {
 		
@@ -88,8 +87,9 @@
 		if (empty($bio)) {
 			$error = "Veuilliez renseignez le champs de Description";
 		}
+		
 		//Verif Image
-		if (!empty($_FILES)) {
+		if (($_FILES['pic_name']['error']) != 4) {
 
 			$tmpName = $_FILES['pic_name']['tmp_name'];
 
@@ -115,6 +115,9 @@
 			if (!in_array($mime, $acceptedMime)) {
 				$error = "Type de fichier refuser ";
 			}
+			if ($_FILES = $_SESSION['user']['pic_name']) {
+				
+			}
 
 			if (empty($error)) {
 				$extention = pathinfo($_FILES['pic_name']['name'], PATHINFO_EXTENSION);
@@ -131,13 +134,27 @@
 				$img->thumbnail(150,150)->save($destinationDirectory . "thumbnails/" . $pic_name);
 		
 			}
+			if (empty($error)) {
+			
+			$sql = "UPDATE users 
+					SET pic_name = :pic_name
+					WHERE id = :id";
+
+				$sth = $dbh->prepare($sql);
+				$sth->bindValue(":id", $_SESSION['user']['id']);
+				$sth->bindValue(':pic_name', $pic_name);
+				$sth->execute();
+
+				$succes = "Modification enregistrer";
+
+		}
 		}
 
 		// insert dans la BDD
 		if (empty($error)) {
 			
 			$sql = "UPDATE users 
-					SET user_name = :user_name, email = :email, bio = :bio, pic_name = :pic_name
+					SET user_name = :user_name, email = :email, bio = :bio
 					WHERE id = :id";
 
 				$sth = $dbh->prepare($sql);
@@ -145,7 +162,6 @@
 				$sth->bindValue(':user_name', $user_name);
 				$sth->bindValue(':email', $email);
 				$sth->bindValue(':bio', $bio);
-				$sth->bindValue(':pic_name', $pic_name);
 				$sth->execute();
 
 				$succes = "Modification enregistrer";
