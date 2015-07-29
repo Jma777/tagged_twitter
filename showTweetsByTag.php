@@ -26,7 +26,7 @@
 		$tweetByTag = $sth->fetchAll();
 		// pr($tweetByTag);
 
-		echo "<h2>"."Les tweets de ".$tweetByTag[0]['title']."</h2>";
+		//echo "<h2>"."Les tweets de ".$tweetByTag[0]['title']."</h2>";
 
 		foreach ($tweetByTag as $tweet){
 
@@ -37,7 +37,42 @@
 	 	$tweet_author = $tweet['user_name'];
 	 	$tweet_date = $tweet['date_created'];
 	 	$id = $tweet['user_id'];
-	 	echo "<p>".$tweet_content.'<br />'.'<a href="showProfile.php?i='.$id.'">'.$tweet_author.'</a>'.'<br />'."posté le : ".$tweet_date."</p>";
+	 	//echo "<p>".$tweet_content.'<br />'.'<a href="showProfile.php?i='.$id.'">'.$tweet_author.'</a>'.'<br />'."posté le : ".$tweet_date."</p>";
 	}
 
 	}
+?>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<header>
+		<h1>Twitter</h1>
+		<a href="accueil.php">Accueil</a>
+		<a href="profil.php">Profil</a>
+		<a href="parametre_profil.php">Paramètre</a>	
+		<a href="includes/logout.php">Déconnexion</a>
+	</header>
+	<div class='main-container'>
+		<h2>Les tweets de <?php echo $tweetByTag[0]['title']; ?></h2>
+		<div class="tweet">
+			<?php 
+				foreach ($tweetByTag as $tweet){
+		
+	 			$tweet_content = $tweet['tweet_content'];
+	 			$img = $tweet['pic'] . ".jpg";
+	 			$img_title = $tweet['pic'];
+	 			$link = $tweet['link'];
+	 			$tweet_author = $tweet['user_name'];
+	 			$tweet_date = $tweet['date_created'];
+	 			$id = $tweet['user_id'];
+	 			echo "<p>".$tweet_content.'<br />'.'<a href="showProfile.php?i='.$id.'">'.$tweet_author.'</a>'.'<br />'."posté le : ".$tweet_date."</p>";
+			}
+			 ?>
+		</div>
+	</div>
+</body>
+</html>
