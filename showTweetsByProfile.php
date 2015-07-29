@@ -33,7 +33,7 @@
 	 	$tweet_author = $tweet['user_name'];
 	 	$tweet_date = $tweet['date_created'];
 	 	$id = $tweet['user_id'];
-	 	echo "<p>".$tweet_content.'<br />'.'<a href="showProfile.php?i='.$id.'">'.$tweet_author.'</a>'.'<br />'."posté le : ".$tweet_date."</p>";
+	 	//echo "<p>".$tweet_content.'<br />'.'<a href="showProfile.php?i='.$id.'">'.$tweet_author.'</a>'.'<br />'."posté le : ".$tweet_date."</p>";
 	}
 
 	}
@@ -45,10 +45,34 @@
 	<title>Profil</title>
 </head>
 <body>
+	<header>
+		<h1>Twitter</h1>
+		<a href="accueil.php">Accueil</a>
+		<a href="profil.php">Profil</a>
+		<a href="parametre_profil.php">Paramètre</a>	
+		<a href="includes/logout.php">Déconnexion</a>
+	</header>
 	<div class="main-container">
 		<h1>Profil de <?php echo $tweetByUser[0]['user_name'];?></h1>
 		<p><?php echo $tweetByUser[0]['user_name']; ?></p>
 		<img src="img/uploads/thumbnails/<?php ?>" alt="">
+		<div class="tweet">
+			<p><?php echo $tweet_content ; ?></p>
+			<p>Tweeter le :<?php echo $tweet_date; ?></p>
+			<?php 
+				foreach ($tweetByUser as $tweet){
+
+	 				$tweet_content = $tweet['tweet_content'];
+	 				$img = $tweet['pic'] . ".jpg";
+	 				$img_title = $tweet['pic'];
+	 				$link = $tweet['link'];
+	 				$tweet_author = $tweet['user_name'];
+	 				$tweet_date = $tweet['date_created'];
+	 				$id = $tweet['user_id'];
+	 				echo "<p>".$tweet_content.'<br />'.'<a href="showProfile.php?i='.$id.'">'.$tweet_author.'</a>'.'<br />'."posté le : ".$tweet_date."</p>";
+				}
+			 ?>
+		</div>
 	</div>
 </body>
 </html>

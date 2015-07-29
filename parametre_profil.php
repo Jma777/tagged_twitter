@@ -9,6 +9,14 @@
 	<title>Document</title>
 </head>
 <body>
+	<header>
+		<h1>Twitter</h1>
+
+		<a href="accueil.php">Accueil</a>
+		<a href="profil.php">Profil</a>
+		<a href="parametre_profil.php">Paramètre</a>
+		<a href="includes/logout.php">Déconnexion</a>
+	</header>
 	<div class="main-container">
 		<div>
 			<p>Paramètre de <?php echo $_SESSION['user']['user_name']; ?> </p>
@@ -34,7 +42,6 @@
 						}
 					 ?>
 			</div>
-			<a href="profil.php" class="go-profil">Profil</a>
 			</form>
 			
 		</div>

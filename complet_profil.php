@@ -87,11 +87,14 @@
  	<title>Complet Profil</title>
  </head>
  <body>
+ 	<header>
+ 		<h1>Twitter</h1>
+ 	</header>
  	<div class="main-container">
  		<div>
- 			<h2>Completer votre Profil</h2>
- 			<p>Bienvenue sur Twitter <?php echo $_SESSION['user']['user_name']; ?> nous vous inviton a completer votre profil</p>
  			<form method="POST" enctype="multipart/form-data">
+	 			<h2>Completer votre Profil</h2>
+	 			<p>Bienvenue sur Twitter <?php echo $_SESSION['user']['user_name']; ?> nous vous inviton a completer votre profil</p>
  				<textarea name="bio" id="" cols="30" rows="10" placeholder="Description de vous "></textarea>
  				<input type="file" name="pic_name" id="pic_name">
  				<button type="submit">Valider</button>
@@ -106,7 +109,6 @@
 				 ?>
  				</div>
  			</form>
- 			<a href="includes/logout.php" class="btn">Déconnexion</a>
  		</div>
  	</div>
  </body>

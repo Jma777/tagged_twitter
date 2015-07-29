@@ -20,7 +20,13 @@ include("includes/functions.php");
 		}
 	</style>
 <body>
-	<h1>Accueil</h1>
+	<header>
+		<h1>Accueil</h1>
+		<a href="accueil.php">Accueil</a>
+		<a href="profil.php">Profil</a>
+		<a href="parametre_profil.php">Paramètre</a>	
+		<a href="includes/logout.php">Déconnexion</a>
+	</header>
 
 	<form method= "POST" action="includes/accueil_handler.php">
 		<legend>Ajouter un nouveau tweet</legend>
