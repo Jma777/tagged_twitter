@@ -15,9 +15,10 @@
 </head>
 <body>
 	<header>
-		<h1>Twitter</h1>
+		<h1><i class="fa fa-twitter"></i>Twitter</h1>
 	</header>
 	<div class="main-container">
+		<h2>Bienvenue sur Twitter</h2>
 		<form method="POST" action="includes/login_handler.php">
 			<h2>Connexions</h2>
 			<input type="text" name="email" placeholder="Votre Email">

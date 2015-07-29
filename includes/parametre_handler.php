@@ -115,7 +115,7 @@
 			if (!in_array($mime, $acceptedMime)) {
 				$error = "Type de fichier refuser ";
 			}
-			if ($_FILES = $_SESSION['user']['pic_name']) {
+			if ($_FILES == $_SESSION['user']['pic_name']) {
 				
 			}
 

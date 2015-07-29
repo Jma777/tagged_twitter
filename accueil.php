@@ -6,6 +6,12 @@ include("includes/functions.php");
 <!doctype html>
 <html lang="en">
 <head>
+	<script type="text/javascript" src="js/jQuery.js"></script>
+	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
+	<link href="css/demo-page.css" rel="stylesheet" media="all">
+	<link href="css/hover.css" rel="stylesheet" media="all">
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css">
 	<meta charset="UTF-8">
 	<title>Accueil</title>
 	<link rel="stylesheet" href="css/style.css">
@@ -21,25 +27,27 @@ include("includes/functions.php");
 	</style>
 <body>
 	<header>
-		<h1>Accueil</h1>
-		<a href="accueil.php">Accueil</a>
-		<a href="profil.php">Profil</a>
-		<a href="parametre_profil.php">Paramètre</a>	
-		<a href="includes/logout.php">Déconnexion</a>
+		<h1><i class="fa fa-twitter"></i>Twitter</h1>
+		<div class="header-right">
+			<a href="accueil.php">Accueil</a>
+			<a href="profil.php">Profil</a>
+			<a href="parametre_profil.php">Paramètre</a>
+			<a href="includes/logout.php">Déconnexion</a>			
+		</div>
 	</header>
 
-	<form method= "POST" action="includes/accueil_handler.php">
-		<legend>Ajouter un nouveau tweet</legend>
-		<label for="tweet">Ajouter un nouveau tweet</label>
-		<textarea name="tweet_content" id="tweet_content" cols="30" rows="10"></textarea>	
-		<label for="link">Ajouter un lien</label>
-		<input type="text" id="link" name="link">
-		<label for="pic">Ajouter une image (donner le nom du fichier)</label>
-		<input type="text" id="pic" name="pic">
+	<form method= "POST" action="includes/accueil_handler.php" class="tweeting">
+		<h3>Ajouter un nouveau tweet</h3>
+		<label for="tweet"></label>
+		<textarea class='tweet-text' name="tweet_content" id="tweet_content" cols="50" rows="10"></textarea>	
+		<label for="link"></label>
+		<input type="text" id="link" name="link" placeholder="Ajouter un lien">
+		<label for="pic"></label>
+		<input type="text" id="pic" name="pic" placeholder="Ajouter une image ">
 		<input type="hidden" value="" id="tagId" name ="tagId">
-		<input type="submit" value="Valider">
+		<button type="submit" id="submit">Envoyer</button>
 	</form>
-	<div id="result"></div>
+	<div id="result" class="result"></div>
 
 		
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> 

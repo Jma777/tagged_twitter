@@ -83,20 +83,26 @@
  <!doctype html>
  <html lang="en">
  <head>
+ <script type="text/javascript" src="js/jQuery.js"></script>
+	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
+	<link href="css/demo-page.css" rel="stylesheet" media="all">
+	<link href="css/hover.css" rel="stylesheet" media="all">
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css">
  	<meta charset="UTF-8">
  	<title>Complet Profil</title>
  </head>
  <body>
  	<header>
- 		<h1>Twitter</h1>
+ 		<h1><i class="fa fa-twitter"></i>Twitter</h1>
  	</header>
  	<div class="main-container">
  		<div>
  			<form method="POST" enctype="multipart/form-data">
 	 			<h2>Completer votre Profil</h2>
-	 			<p>Bienvenue sur Twitter <?php echo $_SESSION['user']['user_name']; ?> nous vous inviton a completer votre profil</p>
- 				<textarea name="bio" id="" cols="30" rows="10" placeholder="Description de vous "></textarea>
- 				<input type="file" name="pic_name" id="pic_name">
+	 			<p class="welcome">Bienvenue sur Twitter <?php echo $_SESSION['user']['user_name']; ?> nous vous inviton a completer votre profil</p>
+ 				<textarea class="first-bio" name="bio" id="" cols="50" rows="10" placeholder="Description de vous "></textarea>
+ 				<input class='first-pic' type="file" name="pic_name" id="pic_name">
  				<button type="submit">Valider</button>
  				<div>
  					<?php 

@@ -15,9 +15,10 @@
 </head>
 <body>
 	<header>
-		<h1>Twitter</h1>
+		<h1><i class="fa fa-twitter"></i>Twitter</h1>
 	</header>
 	<div class="main-container">
+	<h2>Bienvenue sur Twitter</h2>
 		<form method="POST">
 			<h2>Inscription</h2>
 
