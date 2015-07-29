@@ -17,16 +17,22 @@
 	<title>Profil</title>
 </head>
 <body>
+	<header>
+		<h1>Twitter</h1>
+
+		<a href="accueil.php">Accueil</a>
+		<a href="profil.php">Profil</a>
+		<a href="parametre_profil.php">Paramètre</a>
+		<a href="includes/logout.php">Déconnexion</a>
+
+	</header>
 	<div class="main-container">
 		<div>
 			<h2><?php echo $_SESSION['user']['user_name']; ?></h2>
 			<p><?php echo $_SESSION['user']['bio']; ?></p>
-			<p><?php echo $_SESSION['user']['email']; ?></p>
 			
 			<img src="img/uploads/thumbnails/<?php echo $_SESSION['user']['pic_name']; ?>" alt="Photo de profil">
 		</div>
-		<a href="includes/logout.php">Déconnexion</a>
-		<a href="parametre_profil.php">Paramètre</a>
 	</div>
 </body>
 </html>

@@ -14,9 +14,12 @@
 	<title>Tagged Twitter</title>
 </head>
 <body>
+	<header>
+		<h1>Twitter</h1>
+	</header>
 	<div class="main-container">
 		<form method="POST">
-			<h1>Inscription</h1>
+			<h2>Inscription</h2>
 
 			<input type="text" name="user_name" id="user_name" placeholder="Votre pseudo">
 

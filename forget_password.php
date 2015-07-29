@@ -14,8 +14,11 @@
  	<title>Document</title>
  </head>
  <body>
+ 	<header>
+		<h1>Twitter</h1>
+	</header>
  	<form method="POST" action="includes/forget_password_handler.php">
-		<h1>Mots de passe Oublier ?</h1>
+		<h2>Mots de passe Oublier ?</h2>
 		<p class="forget-text">Entrer votre adresse Email pour recevoir un mail et changer votre mots de passe</p>
 		<input type="text" placeholder="Entrer votre adresse Mail" name="email">
 		<div class="error">

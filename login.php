@@ -14,9 +14,12 @@
 	<title>Document</title>
 </head>
 <body>
+	<header>
+		<h1>Twitter</h1>
+	</header>
 	<div class="main-container">
-		<h1>Connexions</h1>
 		<form method="POST" action="includes/login_handler.php">
+			<h2>Connexions</h2>
 			<input type="text" name="email" placeholder="Votre Email">
 			<input type="password" name="password" placeholder="Password">
 			<button type="submit">Connexion</button>
