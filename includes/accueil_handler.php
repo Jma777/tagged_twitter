@@ -28,6 +28,7 @@
 	$sth->bindValue(":tagId",$tagId);
 
 	$sth->execute();
+	header("location: ../accueil.php");
 
 	echo "tweet posté !";
 		// header("location: ../accueil.php");

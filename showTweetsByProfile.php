@@ -37,3 +37,18 @@
 	}
 
 	}
+?>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Profil</title>
+</head>
+<body>
+	<div class="main-container">
+		<h1>Profil de <?php echo $tweetByUser[0]['user_name'];?></h1>
+		<p><?php echo $tweetByUser[0]['user_name']; ?></p>
+		<img src="img/uploads/thumbnails/<?php ?>" alt="">
+	</div>
+</body>
+</html>
