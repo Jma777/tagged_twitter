@@ -85,7 +85,7 @@
 		if (empty($error)) {
 
 			$sql = "INSERT INTO users(id, user_name, password, email, pic_name, bio, token, token_expired, date_created, date_modified)
-							VALUES (NULL, :user_name, :password, :email,NULL, NULL, NULL, NULL, NOW(), NOW())";
+							VALUES (NULL, :user_name, :password, :email,'default.jpg', NULL, NULL, NULL, NOW(), NOW())";
 
 
 				$sth = $dbh->prepare($sql);

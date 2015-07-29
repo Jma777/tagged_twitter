@@ -14,7 +14,7 @@
 		}
 
 		// Verif image
-		if (!empty($_FILES)) {
+		if (!empty($_FILES) && $_FILES['pic_name']['error'] != 4) {
 
 			$tmpName = $_FILES['pic_name']['tmp_name'];
 
@@ -28,7 +28,7 @@
 						break;
 					default:
 						$error = "Une erreur est survenue lors du chargement de votre image LOL";
-						break;		
+						break;
 				}
 			}
 
@@ -56,7 +56,11 @@
 				$img->thumbnail(150,150)->save($destinationDirectory . "thumbnails/" . $pic_name);
 	
 			}
+			
 		}
+		if ($_FILES["pic_name"]['error'] == 4) {
+				$pic_name = "default.jpg";
+			}
 		if (empty($error)) {
 			$sql = "UPDATE users SET bio = :bio, pic_name = :pic_name WHERE id = :id";
 
