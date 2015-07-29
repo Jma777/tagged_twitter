@@ -45,6 +45,7 @@ include("includes/functions.php");
 				"url": "http://localhost/tagged_twitter/getTagId.php"
 			}).done(function(response){
 				tag_id = response;
+				$("#tagId").attr("value",tag_id);
 			});
 		};
 		function getRelatedTweets(){
@@ -58,10 +59,45 @@ include("includes/functions.php");
 
 		};
 
-		$("#result").on("click",".icon",function(){
+		function addFavourites(e){
 			console.log(this);
-		});
+			var clickStar = $(this);
+			var tweet_id = clickStar.attr("data-tweet_id");
+
+
+
+				$.ajax({
+					"url": "http://localhost/tagged_twitter/includes/favourites_handler.php",
+					"data":{"tweet_id":tweet_id}
+				}).done(function(response){
+					// console.log(response);
+					clickStar.css("background-position","0% 34%");
+					e.stopPropagation();
+				});
+			
+		};
+
+		// function removeFavourites(e){
+		// 	var clickStar = $(this);
+		// 	var tweet_id = clickStar.attr("data-tweet_id");
+		// 	console.log(this);
+		// 	$.ajax({
+		// 		"url":"http://localhost/tagged_twitter/includes/removeFavourites_handler.php",
+		// 		"data":{"tweet_id":tweet_id}
+		// 	}).done(function(response){
+		// 		clickStar.css("background-position","0% 22%");
+		// 		e.stopPropagation();
+		// 	});
+
+		// };
+
+
+			
+
+			
 		
+		$("#result").on("click",".icon",addFavourites);
+		// $("#result").on("click",".icon",removeFavourites);
 		$(window).on("load",getTag);
 		$(window).on("load",getRelatedTweets);
 		
