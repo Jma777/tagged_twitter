@@ -18,13 +18,15 @@
 	$tweets = $sth->fetchAll();
 
 	// pr($tweets);
-
-	$sql = "SELECT f.user_id,f.tweet_id, t.id, t.user_id, t.tag_id, t.tweet_content, t.link, t.pic, t.date_created, u.user_name
+	// récupération des tweets favoris
+	$favorite_user_id = $_SESSION['user']['id'];
+	$sql = "SELECT f.user_id,f.tweet_id,t.id, t.user_id, t.tag_id, t.tweet_content, t.link, t.pic, t.date_created,u.user_name
 			FROM favorite AS f
 			JOIN tweets AS t
 			ON f.tweet_id = t.id
 			JOIN users AS u
-			ON t.user_id = u.id";
+			ON u.id = t.user_id
+			WHERE f.user_id = $favorite_user_id";
 
 	$sth = $dbh->prepare($sql);
 	$sth->execute();
