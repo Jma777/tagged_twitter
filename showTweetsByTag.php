@@ -78,7 +78,7 @@
 	 			$tweet_author = $tweet['user_name'];
 	 			$tweet_date = $tweet['date_created'];
 	 			$id = $tweet['user_id'];
-	 			echo "<p>".$tweet_content.'<br />'.'<a href="showProfile.php?i='.$id.'">'.$tweet_author.'</a>'.'<br />'."posté le : ".$tweet_date."</p>";
+	 			echo "<p>".$tweet_content.'<br />'.'<a href="showTweetsByProfile.php?i='.$id.'">'.$tweet_author.'</a>'.'<br />'."posté le : ".$tweet_date."</p>";
 			}
 			 ?>
 		</div>
