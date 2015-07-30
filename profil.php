@@ -2,12 +2,36 @@
 	session_start();
 	include("includes/db.php");
 	include("includes/functions.php");
+	// pr($_SESSION);
 
 	// affichage des tweets de l'user
-	$sql = "SELECT *
-			FROM tweets
-			WHERE user_id = 
+	$sql = "SELECT t.id, t.user_id, t.tag_id, t.tweet_content, t.link, t.pic, t.date_created, users.user_name
+			FROM tweets AS t
+			JOIN users
+			ON t.user_id = users.id
+			WHERE t.user_id = :user_id
 			ORDER BY date_created DESC";
+
+	$sth = $dbh->prepare($sql);
+	$sth->bindValue(":user_id",$_SESSION['user']['id']);
+	$sth->execute();
+	$tweets = $sth->fetchAll();
+
+	// pr($tweets);
+
+	$sql = "SELECT f.user_id,f.tweet_id, t.id, t.user_id, t.tag_id, t.tweet_content, t.link, t.pic, t.date_created, u.user_name
+			FROM favorite AS f
+			JOIN tweets AS t
+			ON f.tweet_id = t.id
+			JOIN users AS u
+			ON t.user_id = u.id";
+
+	$sth = $dbh->prepare($sql);
+	$sth->execute();
+	$favorite_tweets = $sth->fetchAll();
+
+	// pr($favorite_tweets);
+
 
 ?>
 <!doctype html>
@@ -39,6 +63,47 @@
 			<p><?php echo $_SESSION['user']['bio']; ?></p>
 			
 			<img src="img/uploads/thumbnails/<?php echo $_SESSION['user']['pic_name']; ?>" alt="Photo de profil">
+
+
+		</div>
+		<div>
+			<h2>Mes tweets</h2>
+
+			<?php
+
+			foreach ($tweets as $tweet){
+
+			 	$tweet_content = $tweet['tweet_content'];
+			 	$img = $tweet['pic'] . ".jpg";
+			 	$img_title = $tweet['pic'];
+			 	$link = $tweet['link'];
+			 	$tweet_author = $tweet['user_name'];
+			 	$tweet_date = $tweet['date_created'];
+			 	$id = $tweet['user_id'];
+			 				 	
+			 	echo "<p>".$tweet_content.'<br />'.'<a href="showTweetsByProfile.php?i='.$id.'">'.$tweet_author.'</a>'.'<br />'."posté le : ".$tweet_date.'</div>'."</p>";
+			}
+			?>
+
+			<h2>Mes tweets favoris</h2>
+
+			<?php
+
+			foreach ($favorite_tweets as $favorite_tweet){
+
+			 	$tweet_content = $favorite_tweet['tweet_content'];
+			 	$img = $favorite_tweet['pic'] . ".jpg";
+			 	$img_title = $favorite_tweet['pic'];
+			 	$link = $favorite_tweet['link'];
+			 	$tweet_author = $favorite_tweet['user_name'];
+			 	$tweet_date = $favorite_tweet['date_created'];
+			 	$id = $favorite_tweet['user_id'];
+			 				 	
+			 	echo "<p>".$tweet_content.'<br />'.'<a href="showTweetsByProfile.php?i='.$id.'">'.$tweet_author.'</a>'.'<br />'."posté le : ".$tweet_date.'</div>'."</p>";
+			}
+
+			?>
+			
 		</div>
 	</div>
 </body>
